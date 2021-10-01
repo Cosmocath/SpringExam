@@ -16,20 +16,24 @@ public class InfirmiereController {
     public InfirmiereController(InfirmiereService infirmiereService) {
         this.infirmiereService = infirmiereService;
     }
+
     @GetMapping("")
     public List<Infirmiere> trouverListeInfirmieres() {
         return infirmiereService.trouverListeInfirmieres();
     }
+
     @PostMapping
     public Infirmiere creer(@RequestBody Infirmiere infirmiere) {
         return infirmiereService.creer(infirmiere);
     }
+
     @GetMapping("{id}")
-    public Optional<Infirmiere> trouverInfirmiereParId(Long along) {
-        return infirmiereService.trouverInfirmiereParId(along);
+    public Optional<Infirmiere> trouverInfirmiereParId(@PathVariable Long id) {
+        return infirmiereService.trouverInfirmiereParId(id);
     }
+
     @DeleteMapping("{id}")
-    public void supprimerInfirmiereParId(@PathVariable Long along) {
-        infirmiereService.supprimerInfirmiereParId(along);
+    public void supprimerInfirmiereParId(@PathVariable Long id) {
+        infirmiereService.supprimerInfirmiereParId(id);
     }
 }
