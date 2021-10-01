@@ -6,10 +6,13 @@ import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.Date;
 
-
+enum Sexe {
+    H,
+    F,
+}
 
 @Entity
-@Table(name = "client")
+@Table(name = "patient")
 @Data
 public class Patient {
     @Id
@@ -25,11 +28,20 @@ public class Patient {
     @Column(name = "dateDeNaissance")
     private Date dateDeNaissance;
 
-    @Column(name = "sexe")
-    private Enum sexe;
+    @Column(columnDefinition = "ENUM('H', 'F')")
+    @Enumerated(EnumType.STRING)
+    private Sexe sexe;
 
-    @Column(name = "numeroSecuriteSocial")
-    private BigInteger numeroSecuriteSocial;
+    @Column(name = "numeroSecuriteSociale")
+    private String numeroSecuriteSocial;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    /**@JoinColumn(name="adresse_id", nullable=false)**/
+    private Adresse adresse;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    /**@JoinColumn(name="infirmiere_id", nullable=false)**/
+    private Infirmiere infirmiere;
 
 
 }

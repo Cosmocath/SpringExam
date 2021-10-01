@@ -27,12 +27,12 @@ public class PatientController {
     }
 
     @GetMapping("{id}")
-    public Optional<Patient> trouverPatientParId(@PathVariable Long along) {
-        return patientService.trouverPatientParId(along);
+    public Optional<Patient> trouverPatientParId(@PathVariable Long id) {
+        return patientService.trouverPatientParId(id);
     }
 
     @DeleteMapping("{id}")
-    public void supprimerClientParId(@PathVariable Long along) {
-        patientService.supprimerClientParId(along);
+    public void supprimerClientParId(@PathVariable Long id) {
+        patientService.supprimerClientParId(id);
     }
 }

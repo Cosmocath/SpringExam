@@ -28,4 +28,8 @@ public class Infirmiere {
 
     @Column(name = "tel_perso")
     private String tel_perso;
+
+    @ManyToOne
+    /**@JoinColumn(name="adresse_id", nullable=false)**/
+    private Adresse adresse;
 }
